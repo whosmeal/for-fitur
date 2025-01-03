@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Fituurkuu</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+
+        .fullscreen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            background-color: #f0f8ff;
+        }
+
+        .popup, .exit-popup, .yes-response-popup {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: #000000;
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            width: 80%;
+            max-width: 600px;
+            height: 60%;
+            overflow-y: auto;
+        }
+
+        .popup.active, .exit-popup.active, .yes-response-popup.active {
+            display: block;
+        }
+
+        .question {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .yes-response-popup .message {
+            font-size: 18px;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            text-align: justify;
+        }
+
+        .popup img {
+            width: 200px;
+            height: auto;
+        }
+
+        button {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 150px;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #ee82ee;
+        }
+
+        .yes-button {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .no-button {
+            background-color: #f44336;
+            color: white;
+            cursor: not-allowed; /* Mengubah kursor menjadi 'not-allowed' saat hover */
+        }
+
+        .exit-button {
+            background-color: #FA8072;
+            color: white;
+        }
+
+        .close-button {
+            background-color: white;
+            color: #000000;
+        }
+
+        #gif {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Flexbox untuk tombol agar sejajar di bawah GIF */
+        .buttons-container {
+            display: flex;
+            justify-content: center; /* Tombol berada di tengah */
+            align-items: center; /* Tombol sejajar secara vertikal */
+            width: 100%;
+            margin-top: 20px; /* Jarak antara GIF dan tombol */
+        }
+
+        .buttons-container button {
+            margin: 0 10px; /* Memberikan jarak antar tombol */
+        }
+
+        .yes-response-popup .message {
+            font-size: 18px;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            text-align: justify;
+        }
+
+        .response-text {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .gif-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="fullscreen">
+        <!-- Initial Popup -->
+        <div class="popup active">
+            <div class="question">Fituur sayang Bilaa ga?</div>
+            <img id="gif" src="3.gif" alt="GIF Animation">
+            <div class="buttons-container">
+                <button class="yes-button" onclick="showYesResponse()">sayangg doong ❤️</button>
+                <!-- Tombol ga sayang sekarang dinonaktifkan dan kursor diubah -->
+                <button class="no-button" id="noButton" disabled>ga sayang</button>
+            </div>
+        </div>
+
+        <!-- Yes Response Popup -->
+        <div class="yes-response-popup" id="yesResponsePopup">
+            <div class="response-text">Makasii sayanggkuu! ❤️</div>
+            <div class="gif-container">
+                <img src="2.gif" alt="GIF Animation">
+            </div>
+            <button class="close-button" onclick="closeYesResponsePopup()">sama-sama sayangg</button>
+        </div>
+
+        <!-- Exit Popup -->
+        <div class="exit-popup" id="exitPopup">
+            <div class="message">
+                haii sayangg, akuu mau ngomong sesuatu nii.<br><br>
+                Makasii yaa sayangg, makasii udah jadi orang yang selalu ada buat aku, makasii kamu udah mau sabar sama sikap aku yang sometimes suka bikin kamu kesel.<br><br>
+                Satu hal yang harus kamu tau, that i love u so much!!! akuu beruntung punya kamu yangg, makasii udah mau terima semua kelebihan dan kekurangan aku. kamu ga perlu jadi orang lain untuk buat aku senang, jadi diri kamu sendiri udaa bikin aku senang yangg.<br><br>
+                Jangan nethink tentang sayang aku ke kamu yaa sayangg, karna sama kamu aja udah cukup, aku maunyaa cuma kamuu sayangg, i hope u too. u know?? punya kamu itu salah satu hal yang bikin aku beruntung bangetttt, aku bersyukur dikasih kamu yangg, kamu rumah sebenarnya yangg, cuman kamu yang bisa ubah aku jadi pribadiku yang lebih baik dari yang sebelumnya, aku ga harus jadi orang lain di depan kamu.<br><br>
+                Ini alasan kenapa aku milih kamu dari beribu banyak nya lelaki karna kamu punya rasa nyaman tersendiri yang ga akan aku temui dimana pun, sekarang kamu jadi orang yang paling penting di hidup aku yangg, tetap gini terus ya sayangg gaboleh sedikit pun berubah. kita belajar dewasa bareng apapun masalah kita nanti, okeyy sayangg? aku yakin kita punya kekurangan dan kelebihan, jadi kita harus melengkapi satu sama lain dan kita harus lewatin itu semua bersama-sama, aku mau saling belajar buat jadi support system' yang selalu ada dalam hal apapun. kamu harus inget kalo sekarang ada aku, aku bakal selalu usahain buat jadi yang terbaik dan nemenin kamu terus I LOVE YOU SO MUCH GANTENGKUU💕
+            </div>
+            <button onclick="exitApp()" class="exit-button">iyaa sayanggkuu</button>
+        </div>
+    </div>
+
+    <script>
+        const popup = document.querySelector('.popup');
+        const yesResponsePopup = document.getElementById('yesResponsePopup');
+        const exitPopup = document.getElementById('exitPopup');
+        const noButton = document.getElementById('noButton');
+
+        // Show the "Yes" response popup
+        function showYesResponse() {
+            popup.style.display = 'none';
+            yesResponsePopup.style.display = 'block';
+        }
+
+        // Close the "Yes" response popup and show the exit popup
+        function closeYesResponsePopup() {
+            yesResponsePopup.style.display = 'none';
+            exitPopup.style.display = 'block'; // Show exit popup after closing yes response
+        }
+
+        // Exit the app (show exit popup)
+        function exitApp() {
+            window.close(); // Close the browser window
+        }
+    </script>
+</body>
+</html>
